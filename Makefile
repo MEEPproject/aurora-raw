@@ -9,7 +9,7 @@ VIVADO_OPT  := -mode batch -nolog -nojournal -notrace -source
 #Generate the Aurora DMA IP
 
 generate_ip:
-		echo "Generate Aurora DMA IP"
+		@(echo "Generate Aurora RAW IP")
 		$(VIVADO_XLNX) $(VIVADO_OPT)  ./tcl/gen_project.tcl
 
 
