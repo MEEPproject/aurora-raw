@@ -81,7 +81,7 @@ entity aurora_raw_top is
     -- Clocks and Resets
     ----------------------------------------------------------------------------
     INIT_CLK  : in std_logic;
-    RESET     : in std_logic;
+    RESET     : in std_logic; --Active High
     USER_CLK_OUT           : out std_logic;
     SYS_RESET_OUT          : out std_logic
     );

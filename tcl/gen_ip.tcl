@@ -53,6 +53,15 @@ set_property physical_name GT_REFCLK1_P [ipx::get_port_maps CLK_P -of_objects [i
 ipx::add_port_map CLK_N [ipx::get_bus_interfaces gt_refclk -of_objects [ipx::current_core]]
 set_property physical_name GT_REFCLK1_N [ipx::get_port_maps CLK_N -of_objects [ipx::get_bus_interfaces gt_refclk -of_objects [ipx::current_core]]]
 ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces gt_refclk -of_objects [ipx::current_core]]
+ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces S_USER_AXIS_UI_TX -of_objects [ipx::current_core]]
+ipx::add_bus_parameter FREQ_HZ [ipx::get_bus_interfaces M_USER_AXIS_UI_RX -of_objects [ipx::current_core]]
+
+ipx::infer_bus_interface USER_CLK_OUT xilinx.com:signal:clock_rtl:1.0 [ipx::current_core]
+ipx::infer_bus_interface SYS_RESET_OUT xilinx.com:signal:reset_rtl:1.0 [ipx::current_core]
+
+ipx::associate_bus_interfaces -busif M_USER_AXIS_UI_RX -clock USER_CLK_OUT [ipx::current_core]
+ipx::associate_bus_interfaces -busif S_USER_AXIS_UI_TX -clock USER_CLK_OUT [ipx::current_core]
+
 
 
 # Save IP and close project
