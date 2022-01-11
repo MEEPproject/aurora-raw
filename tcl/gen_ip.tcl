@@ -7,7 +7,7 @@ set ip_properties [ list \
     name "MEEP_${g_design_name}" \
     version "$g_ip_version" \
     taxonomy "/MEEP_IP" \
-    display_name "MEEP Aurora DMA" \
+    display_name "MEEP Aurora RAW" \
     description "${g_ip_description}" \
     vendor_display_name "MEEP Project" \
     company_url "https://meep-project.eu/" \
