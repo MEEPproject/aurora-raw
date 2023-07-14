@@ -2,7 +2,7 @@
     <img src="Images/meep-logo-symbol.png" width="200px" alt="<MEEP logo>"/>
 
 <br/>
-<h1 align="center">MEEP Aurora DMA
+<h1 align="center">MEEP Aurora RAW
 <br/>
 <br/>
 
