@@ -29,7 +29,7 @@ variable script_folder
 set script_folder [_tcl::get_script_folder]
 
 set g_vivado_version [version -short] 
-set g_board_part "u280"
+set g_board_part u280
 set g_fpga_part xc${g_board_part}-fsvh2892-2L-e
 set g_project_name aurora_raw
 set g_root_dir    $script_folder/../                     
