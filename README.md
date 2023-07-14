@@ -9,6 +9,7 @@
 </div>
 <div align="center">
 <div align="left">
+
 # Description
 
 The MEEP platform enables FPGA-to-FPGA communication using Aurora Xilinx IP.
