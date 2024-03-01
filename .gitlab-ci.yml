@@ -27,7 +27,7 @@ stages:
 Build_aurora_raw:
   stage: build
   tags:
-    - bistream
+    - synthesis
   retry: 2
   rules:
     - !reference [.ip_rules, rules]
