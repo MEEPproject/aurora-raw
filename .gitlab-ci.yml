@@ -1,0 +1,40 @@
+# /*
+#  * Filename: ../ip/10GbEthernet/.gitlab-ci.yml
+#  * Created Date: Friday, July 14 , 14:28 pm
+#  * Author: Francelly Cano
+#  *
+#  * Copyright (c) 2023 MEEP Project
+#  */
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "pipeline" # Trigger method
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+      when: never # Pushing to main doesn't create pipelines
+
+.ip_rules:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+stages:
+  - build
+
+Build_aurora_raw:
+  stage: build
+  tags:
+    - synthesis
+  retry: 2
+  rules:
+    - !reference [.ip_rules, rules]
+  script:
+    - echo "Building Aurora DMA IP"
+    - make generate_ip > build_ip.log
+    - cat build_ip.log
+  after_script:
+    - grep "IP succesfully packaged" build_ip.log
+    - echo "The Ip was generated succesfully"
